@@ -113,7 +113,7 @@ def main():
     project_path = '/'.join(this_file_path.split('/')[:-2])
 
     # title
-    st.header(body='Would you have survived the Titanic?🚢')
+    st.header(body='Would you have survived the Titanic?')
 
     # get the data from the user
     df_user_data = get_user_data()
@@ -123,26 +123,25 @@ def main():
     prob = model.predict_proba(df_user_data)[0][1]
     prob = int(prob * 100)
 
-    emojis = ["😕", "🙃", "🙂" , "😀"]
-    state = min(prob // 25, 3)  # [0,1,2,3] ~= [horrible, bad, good, great]
+    state = min(prob // 25, 3)
 
     st.write('')
     st.title(f'{prob}% chance to survive! {emojis[state]}')
     if state == 0:  # 0-24% chance to survive
         st.error(
-            "Bad news my friend, you will be food for sharks! 🦈"
+            "Bad news my friend, you will be food for sharks!"
         )
     elif state == 1:  # 25-49% chance to survive
         st.warning(
-            "Hey... I hope you know how to swim, maybe you have to do it! 🏊‍♂️"
+            "Hey... I hope you know how to swim, maybe you have to do it!"
         )
     elif state == 2:  # 50-74% chance to survive
         st.info(
-            "Well done! You are on the right track, but don't get lost! 😙"
+            "Well done! You are on the right track, but don't get lost!"
         )
     else:  # 75-100% chance to survive
         st.success(
-            'Congratulations! You can rest assured, you will be fine! 🤩'
+            'Congratulations! You can rest assured, you will be fine!'
         )
 
     # display an image of the Titanic
