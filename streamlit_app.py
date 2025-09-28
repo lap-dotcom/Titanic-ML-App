@@ -48,8 +48,6 @@ def main():
     st.write("Your data:")
     st.write(df_user_data)
 
-    st.image(project_path + '/images/RMS_Titanic.jpg')
-
 
 if __name__ == '__main__':
     main()
